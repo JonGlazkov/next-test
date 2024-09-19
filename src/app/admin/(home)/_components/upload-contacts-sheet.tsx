@@ -70,7 +70,6 @@ export function ContactUploadSheet({
       });
     }
   );
-  console.log(form.watch("file"));
 
   return (
     <Sheet>

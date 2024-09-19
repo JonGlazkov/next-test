@@ -1,6 +1,9 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
+
 const nextAuthOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -30,6 +33,14 @@ const nextAuthOptions: NextAuthOptions = {
         return null;
       },
     }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID as string,
+      clientSecret: process.env.GITHUB_SECRET as string,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID as string,
+      clientSecret: process.env.GOOGLE_SECRET as string,
+    }),
   ],
   callbacks: {
     async jwt({ token, user }) {
@@ -37,8 +48,11 @@ const nextAuthOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      // @ts-expect-error error
-      session = token.user as unknown;
+      if (token?.user) {
+        //@ts-expect-error Expires not found in type User
+        session = token.user;
+      }
+
       return session;
     },
   },

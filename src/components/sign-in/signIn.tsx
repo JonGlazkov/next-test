@@ -1,3 +1,4 @@
+import { signIn } from "next-auth/react";
 import { SignInForm } from "./form";
 
 export default function SignIn() {
@@ -11,7 +12,10 @@ export default function SignIn() {
         <hr className="w-full border-gray-300" />
       </div>
       <div className="flex space-x-4">
-        <button className="bg-white text-gray-600 font-bold py-2 px-4 w-full border rounded flex items-center justify-center hover:bg-gray-100">
+        <button
+          onClick={() => signIn("google")}
+          className="bg-white text-gray-600 font-bold py-2 px-4 w-full border rounded flex items-center justify-center hover:bg-gray-100"
+        >
           <img
             className="h-5 mr-2"
             src="https://cdn2.hubspot.net/hubfs/53/image8-2.jpg"
@@ -19,7 +23,10 @@ export default function SignIn() {
           />{" "}
           Google
         </button>
-        <button className="bg-white text-gray-600 font-bold py-2 px-8 w-full border rounded flex items-center justify-center hover:bg-gray-100">
+        <button
+          onClick={() => signIn("github")}
+          className="bg-white text-gray-600 font-bold py-2 px-8 w-full border rounded flex items-center justify-center hover:bg-gray-100"
+        >
           <img
             className="h-5 mr-2"
             src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
