@@ -10,6 +10,8 @@ export function DashboardSidebarContainer({
     <aside
       className={cn([
         "border-r border-border flex flex-col space-y-6",
+        "lg:flex",
+        "hidden",
         className,
       ])}
     >
@@ -23,7 +25,9 @@ export function DashboardSidebarHeader({
   className,
 }: ComponentsGenericProps) {
   return (
-    <header className={cn(["px-6 py-3 border-b border-border", className])}>
+    <header
+      className={cn(["px-6 py-3 border-b border-border relative", className])}
+    >
       {children}
     </header>
   );

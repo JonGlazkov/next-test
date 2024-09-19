@@ -1,18 +1,35 @@
+"use client";
+import { useDevice } from "@/context";
 import { cn } from "@/lib/utils";
 import { ComponentsGenericProps } from "../types";
 
 export function DashboardPage({ children, className }: ComponentsGenericProps) {
-  return <section className={cn(["h-screen", className])}>{children}</section>;
+  const { isMobile, isSidebarOpen } = useDevice();
+
+  return (
+    <section
+      className={cn([
+        `h-screen ${isMobile && !isSidebarOpen ? "w-screen" : "w-full"}`,
+        className,
+      ])}
+    >
+      {children}
+    </section>
+  );
 }
 
 export function DashboardPageHeader({
   children,
   className,
 }: ComponentsGenericProps) {
+  const { isMobile } = useDevice();
+
   return (
     <header
       className={cn([
-        "flex items-center justify-between px-6 h-16 border-b border-border",
+        `flex items-center justify-between ${
+          isMobile ? "px-6 pl-20" : "px-6"
+        } h-16 border-b border-border`,
         className,
       ])}
     >

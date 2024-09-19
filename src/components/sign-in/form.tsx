@@ -55,7 +55,7 @@ export function SignInForm() {
         />
       </div>
 
-      <h2 className="text-3xl font-bold mb-8">Sign In to your account</h2>
+      <h2 className="text-2xl font-bold mb-8">Sign In to your account</h2>
 
       <form onSubmit={handleSubmit(handleSignIn)} className="w-3/5">
         <div className="mb-4">

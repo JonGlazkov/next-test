@@ -29,7 +29,7 @@ export default function Home() {
       <div className=" w-full flex justify-center bg-white rounded-lg overflow-hidden">
         {tab === TabsType.SIGN_IN ? <SignIn /> : <SignUp />}
 
-        <div className="w-full h-screen">
+        <div className="w-full h-screen hidden md:flex">
           <img
             src="https://images.unsplash.com/photo-1542282088-fe8426682b8f"
             alt="Car Bulb light"

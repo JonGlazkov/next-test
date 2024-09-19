@@ -13,6 +13,7 @@ import { ContactUpsertSheet } from "./_components/contact-upsert-sheet";
 import { ContactUploadSheet } from "./_components/upload-contacts-sheet";
 import { getContacts } from "./actions";
 
+// eslint-disable-next-line @next/next/no-async-client-component
 export default async function Page() {
   const contacts = await getContacts();
   const groups = await getGroups();
